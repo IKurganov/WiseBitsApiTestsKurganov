@@ -1,8 +1,8 @@
-import com.github.javafaker.Faker;
-import model.User;
-import org.testng.annotations.Test;
+package tests;
 
-import java.util.List;
+import com.github.javafaker.Faker;
+import org.testng.annotations.Test;
+import utils.SpecsBase;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
