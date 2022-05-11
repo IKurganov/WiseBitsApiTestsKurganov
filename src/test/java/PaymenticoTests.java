@@ -50,16 +50,15 @@ public class PaymenticoTests {
     @Test
     public void checkUniquenessOfUsersRegistration() {
 
-        String nonUniqueUsername = new Faker().name().username();
-        String nonUniqueEmail = new Faker().internet().emailAddress();
+        String nonUniqueUsername = "kvakva2";
+        String nonUniqueEmail = "dsada@test.com";
         String password = new Faker().internet().password();
 
-        specs.createUser(username, email, password)
+        specs.createUser(nonUniqueUsername, nonUniqueEmail, password)
                 .then()
                 .log().all()
-                .statusCode(200)
-                .body("message", is("User Successully created"))  // текст взят из ответа
-                .body("details.username", is(username))
-                .body("details.email", is(email));
+                .statusCode(400)
+                .body("message[0]", is("This username is taken. Try another."))  // текст взят из ответа
+                .body("success", is(false));
     }
 }
