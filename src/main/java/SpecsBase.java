@@ -32,6 +32,7 @@ public class SpecsBase {
 
     public Response getUsers() {
         return given(spec)
+                .contentType(ContentType.JSON)
                 .with()
                 .log().all()
                 .when()

@@ -2,10 +2,14 @@ import com.github.javafaker.Faker;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
 public class PaymenticoTests {
+    // положил тесты в один класс, но можно было бы разнести в классы по эндпоинту
+
     SpecsBase specs = new SpecsBase();
 
+    // 1 - Успешная регистрация пользователя с указанием всех необходимых данных
     @Test
     public void checkRegistrationOfUser() {
 
@@ -20,5 +24,16 @@ public class PaymenticoTests {
                 .body("message", is("User Successully created"))  // текст взят из ответа
                 .body("details.username", is(username))
                 .body("details.email", is(email));
+    }
+
+    // 2 - Успешное получение корректных данных о зарегистрированных ранее пользователях
+    @Test
+    public void checkGettingInfoAboutUsers() {
+
+        specs.getUsers()
+                .then()
+                .log().all()
+                .statusCode(200)
+                .body(notNullValue());
     }
 }
