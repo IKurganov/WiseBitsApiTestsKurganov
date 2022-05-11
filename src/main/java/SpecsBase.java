@@ -5,6 +5,10 @@ import io.restassured.specification.RequestSpecification;
 import static io.restassured.RestAssured.given;
 
 public class SpecsBase {
+
+//    + ещё можно было сделать сразу с ответами через ResponseSpecBuilder()
+//    и-или подставлять контент тайп в RequestSpecBuilder()
+
     private RequestSpecification spec;
 
     private static final String BASE_URI = "http://3.145.97.83:3333/";
